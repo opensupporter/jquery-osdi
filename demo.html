@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jQuery OSDI Plugin Demo</title>
+		 <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+        
+        <link rel="stylesheet" href="https://opensupporter.github.io/osdi-docs/css/syntax.css">
+        <link rel="stylesheet" href="https://opensupporter.github.io/osdi-docs/css/main.css">
+	</head>
+	<body>
+		
+		<div class="container">
+            <div class=row-fluid>
+                <div id="header" class="span12">
+                    <h4><a class=brand href="/">jQuery OSDI Plugin Demo</a></h4>
+				</div>
+			</div>
+			
+			<div class="row-fluid">
+                <div id="navigation" class="span2">
+                    <ul class="nav nav-list">
+<!-- 					    <li class="nav-header">Getting Started</li> -->
+					    <li><a href="#simple">Simple Form Example</a></li>
+					    <li><a href="#custom">Custom Form Example</a></li>
+					</ul>
+                </div>
+                
+                <div id="content" class="span10">
+	                <h1>jQuery OSDI Plugin</h1>
+	                
+	                <p>The jQuery OSDI plugin implements non-authenticated POST via AJAX against OSDI-compliant API endpoints.</p>
+	                
+	                <p>The plugin is called on a form and can contain various options, explained in more detail <a href="https://github.com/opensupporter/jquery-osdi">here</a>. See the demo below for some examples on how it can be used.</p>
+	                
+                    <h2 id="simple">Simple Form Example</h2>
+                    
+                    <p>In this example, the plugin is called over a form with default options. It will use the form's <code>action</code> attribute as the OSDI API endpoint to POST to, and it will use the data entered in the form inputs (which are specially named so the plugin can pick them up) as the POST body. It will tell the server to send an autoresponse email as well (which is the default).</p>
+		
+					<form id="simple" action="https://dev.actionnetwork.org/api/v2/petitions/41e14e41-3ba5-4304-8b6e-2dddcd528f98/signatures"  method="post">
+						
+						<p>First Name:</p>
+						<input type="text" name="given_name" />
+						
+						<p>Last Name:</p>
+						<input type="text" name="family_name" />
+						
+						<p>Email Address:</p>
+						<input type="text" name="email_address"/>
+						
+						<p>Street Address:</p>
+						<input type="text" name="street" />
+						
+						<p>City:</p>
+						<input type="text" name="locality" />
+						
+						<p>State (two digits):</p>
+						<input type="text" name="region" />
+						
+						<p>Zip/Postal Code:</p>
+						<input type="text" name="postal_code" />
+						
+						<p>Country (two digits):</p>
+						<input type="text" name="country" />
+						
+						<p>Phone Number:</p>
+						<input type="text" name="phone_number"  />
+						
+						<br/>
+						
+						<button type="submit" id="simple_submit" value="Submit" class="btn-primary">Submit</button>
+					</form>
+					
+					
+					<h2 id="custom">Custom Form Example</h2>
+					
+					<form id="custom" action="/" method="post">
+					
+						<p>Endpoint:</p>
+						<input type="text" id="endpoint" />
+						
+						<p>Body:</p>
+						<textarea id="body"></textarea>
+						
+						<input type="submit" id="custom_submit" value="Submit" />
+					</form>
+					
+					<p>Response:</p>
+					<textarea id="custom_response"></textarea>
+                </div>
+            </div>
+			
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" type="text/javascript"></script> 
+		<script src="jquery.osdi.js" type="text/javascript"></script>
+		
+		<script type="text/javascript">
+		$(document).ready(function() {
+			$('#simple').osdi({
+				//endpoint: "s"
+				//add_tags: ["something"],
+/*
+				ajax_options: {
+					"async": "false"
+				}
+*/
+				
+				done: function(data, textStatus, jqXHR) {
+					console.log(data);
+					console.log(textStatus);
+					console.log(jqXHR);
+					console.log('done');
+				},
+				fail: function(jqXHR, textStatus, errorThrown) {
+					console.log(jqXHR);
+					console.log(textStatus);
+					console.log(errorThrown);
+					console.log('fail');
+				},
+				always: function(data_jqXHR, textStatus, jqXHR_errorThrown) {
+					console.log(data_jqXHR);
+					console.log(textStatus);
+					console.log(jqXHR_errorThrown);
+					console.log('always');
+				}
+			});
+		});
+		</script>
+	</body>
+</html>
