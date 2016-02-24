@@ -10,9 +10,9 @@
 	<body>
 		
 		<div class="container">
-            <div class=row-fluid>
+            <div class="row-fluid">
                 <div id="header" class="span12">
-                    <h4><a class=brand href="/">jQuery OSDI Plugin Demo</a></h4>
+                    <h4><a class="brand" href="/">jQuery OSDI Plugin Demo</a></h4>
 				</div>
 			</div>
 			
@@ -35,94 +35,175 @@
                     <h2 id="simple">Simple Form Example</h2>
                     
                     <p>In this example, the plugin is called over a form with default options. It will use the form's <code>action</code> attribute as the OSDI API endpoint to POST to, and it will use the data entered in the form inputs (which are specially named so the plugin can pick them up) as the POST body. It will tell the server to send an autoresponse email as well (which is the default).</p>
-		
-					<form id="simple" action="https://dev.actionnetwork.org/api/v2/petitions/41e14e41-3ba5-4304-8b6e-2dddcd528f98/signatures"  method="post">
-						
-						<p>First Name:</p>
-						<input type="text" name="given_name" />
-						
-						<p>Last Name:</p>
-						<input type="text" name="family_name" />
-						
-						<p>Email Address:</p>
-						<input type="text" name="email_address"/>
-						
-						<p>Street Address:</p>
-						<input type="text" name="street" />
-						
-						<p>City:</p>
-						<input type="text" name="locality" />
-						
-						<p>State (two digits):</p>
-						<input type="text" name="region" />
-						
-						<p>Zip/Postal Code:</p>
-						<input type="text" name="postal_code" />
-						
-						<p>Country (two digits):</p>
-						<input type="text" name="country" />
-						
-						<p>Phone Number:</p>
-						<input type="text" name="phone_number"  />
-						
-						<br/>
-						
-						<button type="submit" id="simple_submit" value="Submit" class="btn-primary">Submit</button>
-					</form>
 					
-					
-					<h2 id="custom">Custom Form Example</h2>
-					
-					<form id="custom" action="/" method="post">
-					
-						<p>Endpoint:</p>
-						<input type="text" id="endpoint" />
+					<div class="row-fluid">
+						<div class="span6">
+							<h4>Demo:</h4>
+							
+							<div id="simple-demo-wrap">
+<form id="simple-demo" action="https://osdi-sample-system.com/api/v1/petitions/41e14e41-3ba5-4304-8b6e-2dddcd528f98/signatures"  method="post">
+	
+	<label>First Name:</label>
+	<input type="text" name="given_name" />
+	
+	<label>Last Name:</label>
+	<input type="text" name="family_name" />
+	
+	<label>Email Address:</label>
+	<input type="text" name="email_address"/>
+	
+	<label>Street Address:</label>
+	<input type="text" name="street" />
+	
+	<label>City:</label>
+	<input type="text" name="locality" />
+	
+	<label>State (two digits):</label>
+	<input type="text" name="region" />
+	
+	<label>Zip/Postal Code:</label>
+	<input type="text" name="postal_code" />
+	
+	<label>Country (two digits):</label>
+	<input type="text" name="country" />
+	
+	<label>Phone Number:</label>
+	<input type="text" name="phone_number"  />
+	
+	<div>
+		<button type="submit" id="simple_submit" value="Submit" class="btn-primary btn">Submit</button>
+	</div>
+</form>
+							</div>
+						</div>
 						
-						<p>Body:</p>
-						<textarea id="body"></textarea>
-						
-						<input type="submit" id="custom_submit" value="Submit" />
-					</form>
+						<div class="span6">
+							<h4>Code:</h4>
+							
+							<div class="highlighter-rouge" id="simple-code">
+								<pre class="">
+<code></code>
+								</pre>
+							</div>
+						</div>
+					</div>
 					
-					<p>Response:</p>
-					<textarea id="custom_response"></textarea>
+					<p><a href="#">Back to top...</a></p>
+					
+					<h2 id="custom">Custom Example</h2>
+                    
+                    <p>In this example, the plugin is called with custom options, including a custom built body JSON instead of one derived from the form inputs directly, a custom endpoint instead of the one specified by the form's <code>action</code> attribute, custom AJAX event handlers, the <code>add_tags</code> option, and the autoresponse is suppressed.</p>
+					
+					<div class="row-fluid">
+						<div class="span6">
+							<h4>Demo:</h4>
+							
+							<div id="custom-demo-wrap">				
+<form id="custom-demo" action="/" method="post">
+
+	<p>First Name:</p>
+	<select name="first" id="first">
+		<option value="">[choose one]</option>
+		<option value="Adam">Adam</option>
+		<option value="Eve">Eve</option>
+	</select>
+	
+	<label>Email Address:</label>
+	<input type="text" name="email_address" id="email" />
+	
+	<div>
+		<button type="submit" id="custom_submit" value="Submit" class="btn-primary btn">Submit</button>
+	</div>
+	
+	<div id="success">
+	</div>
+</form>
+							</div>
+						</div>
+						
+						<div class="span6">
+							<h4>Code:</h4>
+							
+							<div class="highlighter-rouge" id="custom-code">
+								<pre class="">
+<code></code>
+								</pre>
+							</div>
+						</div>
+					</div>
+					
+					<p><a href="#">Back to top...</a></p>
                 </div>
             </div>
 			
 		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" type="text/javascript"></script> 
 		<script src="jquery.osdi.js" type="text/javascript"></script>
+
+<div id="simple-js-wrap">	
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#simple-demo').osdi();
+});
+</script>
+</div>
+
+<div id="custom-js-wrap">
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#custom-demo').osdi({
+		endpoint: "https://osdi-sample-system.com/api/v1/petitions/41e14e41-3ba5-4304-8b6e-2dddcd528f98/signatures",
+		body: function() {
+			return {
+				"person": {
+					"given_name": $('#first').val(),
+					"email_addresses": [
+						{
+							"address": $('#email').val()
+						}
+					]
+				},
+				"add_tags": [
+					"volunteer"
+				]
+			}
+		},
+		done: function(data, textStatus, jqXHR) {
+			console.log('done');
+			$('#success').html('<p><strong>It worked!</strong></p>');
+		},
+		fail: function(jqXHR, textStatus, errorThrown) {
+			console.log('fail');
+		},
+		always: function(data_jqXHR, textStatus, jqXHR_errorThrown) {
+			console.log('always');
+		}
+	});
+});
+</script>
+</div>
 		
-		<script type="text/javascript">
-		$(document).ready(function() {
-			$('#simple').osdi({
-				//endpoint: "s"
-				//add_tags: ["something"],
-/*
-				ajax_options: {
-					"async": "false"
-				}
-*/
+		<script type="text/javascript">	
+		$(document).ready(function() {	
+			
+			function display_code($element, $form_wrap, $js_wrap) {
+				var encoded_html = $form_wrap.html().replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
+				  return '&#' + i.charCodeAt(0) + ';';
+				});
 				
-				done: function(data, textStatus, jqXHR) {
-					console.log(data);
-					console.log(textStatus);
-					console.log(jqXHR);
-					console.log('done');
-				},
-				fail: function(jqXHR, textStatus, errorThrown) {
-					console.log(jqXHR);
-					console.log(textStatus);
-					console.log(errorThrown);
-					console.log('fail');
-				},
-				always: function(data_jqXHR, textStatus, jqXHR_errorThrown) {
-					console.log(data_jqXHR);
-					console.log(textStatus);
-					console.log(jqXHR_errorThrown);
-					console.log('always');
-				}
-			});
+				var encoded_js = $js_wrap.html().replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
+				  return '&#' + i.charCodeAt(0) + ';';
+				});
+				
+				encoded_full = encoded_html + encoded_js;
+				
+				$element.find('code').html(encoded_full);
+			} 
+			
+			display_code($('#simple-code'), $('#simple-demo-wrap'), $('#simple-js-wrap'));
+			display_code($('#custom-code'), $('#custom-demo-wrap'), $('#custom-js-wrap'));
+				
+			
 		});
 		</script>
 	</body>

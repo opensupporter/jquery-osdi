@@ -5,7 +5,7 @@
 	Submit forms to OSDI-compatible systems using OSDI's non-authenticated POST functions and triggers. Requires jQuery 1.8 or above. More info on OSDI at http://opensupporter.org/
 	
 	Version: 0.1.0
-	Last Updated: February 23, 2016
+	Last Updated: February 24, 2016
 	Authors: Jason Rosenbaum
 	Repository & License: 
 	
@@ -111,13 +111,13 @@
 						fail = that.settings.fail;
 						always = that.settings.always;
 						
-						console.log(body);
-						console.log(JSON.stringify(body));
-						console.log(endpoint);
-						console.log(ajax_options);
-						console.log(done);
-						console.log(fail);
-						console.log(always);
+						//console.log(body);
+						//console.log(JSON.stringify(body));
+						//console.log(endpoint);
+						//console.log(ajax_options);
+						//console.log(done);
+						//console.log(fail);
+						//console.log(always);
 						
 						that.perform_ajax(ajax_options, done, fail, always);
 					}
@@ -172,7 +172,7 @@
 					add_tags;
 				
 				if (this.settings.body) {
-					body = this.settings.body;
+					body = this.settings.body();
 				} else {
 					body = {
 						"person" : {}
@@ -190,7 +190,7 @@
 						$.extend( body, autoresponse );
 					}
 					
-					if (this.settings.add_tags != '') {
+					if (this.settings.add_tags) {
 						add_tags = {
 							"add_tags": this.settings.add_tags
 						};
@@ -198,15 +198,16 @@
 						$.extend( body, add_tags );
 					}
 					
-					if ($element.find('input[name="family_name"]').val() != '') {
+					
+					if ($element.find('input[name="family_name"]').length && $element.find('input[name="family_name"]').val() != '') {
 						body.person.family_name = $element.find('input[name="family_name"]').val();
 					}
 					
-					if ($element.find('input[name="given_name"]').val() != '') {
+					if ($element.find('input[name="given_name"]').length && $element.find('input[name="given_name"]').val() != '') {
 						body.person.given_name = $element.find('input[name="given_name"]').val();
 					}
 					
-					if ($element.find('input[name="email_address"]').val() != '') {
+					if ($element.find('input[name="email_address"]').length && $element.find('input[name="email_address"]').val() != '') {
 						email_address = {
 							"email_addresses" : [ 
 								{ 
@@ -219,33 +220,33 @@
 					}
 					
 					if (
-						   	$element.find('input[name="street"]').val() != '' 
-						|| 	$element.find('input[name="locality"]').val() != '' 
-						||	$element.find('input[name="region"]').val() != '' 
-						|| 	$element.find('input[name="postal_code"]').val() != '' 
-						|| 	$element.find('input[name="country"]').val() != ''
+						   	($element.find('input[name="street"]').length && $element.find('input[name="street"]').val() != '') 
+						|| 	($element.find('input[name="locality"]').length && $element.find('input[name="locality"]').val() != '') 
+						||	($element.find('input[name="region"]').length && $element.find('input[name="region"]').val() != '') 
+						|| 	($element.find('input[name="postal_code"]').length && $element.find('input[name="postal_code"]').val() != '')
+						|| 	($element.find('input[name="country"]').length && $element.find('input[name="country"]').val() != '')
 					) {
 						postal_address = {};
 						
-						if ($element.find('input[name="street"]').val() != '') {
+						if ($element.find('input[name="street"]').length && $element.find('input[name="street"]').val() != '') {
 							postal_address.address_lines = [
 								$element.find('input[name="street"]').val()
 							];
 						}
 						
-						if ($element.find('input[name="locality"]').val() != '') {
+						if ($element.find('input[name="locality"]').length && $element.find('input[name="locality"]').val() != '') {
 							postal_address.locality = $element.find('input[name="locality"]').val();
 						}
 						
-						if ($element.find('input[name="region"]').val() != '') {
+						if ($element.find('input[name="region"]').length && $element.find('input[name="region"]').val() != '') {
 							postal_address.region = $element.find('input[name="region"]').val();
 						}
 						
-						if ($element.find('input[name="postal_code"]').val() != '') {
+						if ($element.find('input[name="postal_code"]').length && $element.find('input[name="postal_code"]').val() != '') {
 							postal_address.postal_code = $element.find('input[name="postal_code"]').val();
 						}
 						
-						if ($element.find('input[name="country"]').val() != '') {
+						if ($element.find('input[name="country"]').length && $element.find('input[name="country"]').val() != '') {
 							postal_address.country = $element.find('input[name="country"]').val();
 						}
 						
@@ -258,7 +259,7 @@
 						$.extend( body.person, postal_addresses );
 					}
 					
-					if ($element.find('input[name="phone_number"]').val() != '') {
+					if ($element.find('input[name="phone_number"]').length && $element.find('input[name="phone_number"]').val() != '') {
 						phone_number = {
 							"phone_numbers" : [ 
 								{ 
