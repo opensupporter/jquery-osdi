@@ -33,7 +33,11 @@
 				done: function() {},
 				fail: function() {},
 				always: function() {},
-				ajax_options: {}
+				ajax_options: {
+					type: "POST",
+					dataType: 'json',
+					contentType: 'application/json'
+				}
 			};
 
 		// The actual plugin constructor
@@ -98,11 +102,8 @@
 						}
 						
 						ajax_options = {
-							type: "POST",
 							url: endpoint,
 							data: JSON.stringify(body),
-							dataType: 'json',
-							contentType: 'application/json'
 						}
 						
 						ajax_options = $.extend( ajax_options, that.settings.ajax_options ); 
