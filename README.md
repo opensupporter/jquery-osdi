@@ -40,7 +40,7 @@ The jQuery OSDI plugin can take various options on initialization. They are:
 | Name          | Type      | Default      	| Description
 |-----------    |-----------|--------------	|------------
 |endpoint		|string     |Your form's <code>action</code> attribute.	| The endpoint to POST to.
-|body		|function     |Created from your form's inputs. (See [below](#form-input-names) for special naming conventions.)	| A function that returns the JSON that will be POSTed to the endpoint. Should be valid OSDI for the endpoint, typically OSDI helper POST format containing at least a person object. [See the OSDI documentation form more information and examples.](http://opensupporter.github.io/osdi-docs/)
+|body		|function     |Created from your form's inputs. (See [below](#form-input-names) for special naming conventions.)	| A function that returns the JSON that will be POSTed to the endpoint, which is called when the form is submitted. Should be valid OSDI for the endpoint, typically OSDI helper POST format containing at least a person object. [See the OSDI documentation form more information and examples.](http://opensupporter.github.io/osdi-docs/)
 |autoresponse		|boolean     |true	| Whether the receiving server should asked to send an email autoresponse.
 |add_tags		|array     |	| An array of tags the server should be asked to add to the person.
 |done		|function     |	| A function to be executed after a successful AJAX POST. A passthrough for jQuery's [.done](http://api.jquery.com/jquery.ajax/) callback. Can have the same arguments, <code>data</code>, <code>textStatus</code>, and <code>jqXHR</code>.
