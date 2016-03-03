@@ -33,6 +33,7 @@
 				done: function() {},
 				fail: function() {},
 				always: function() {},
+				status: "subscribed",
 				ajax_options: {
 					type: "POST",
 					dataType: 'json',
@@ -199,7 +200,6 @@
 						$.extend( body, add_tags );
 					}
 					
-					
 					if ($element.find('input[name="family_name"]').length && $element.find('input[name="family_name"]').val() != '') {
 						body.person.family_name = $element.find('input[name="family_name"]').val();
 					}
@@ -218,6 +218,11 @@
 						};
 						
 						$.extend( body.person, email_address );
+						
+						// add status here, if we have email
+						if (this.settings.status) {
+							body.person.email_addresses[0].status = this.settings.status;
+						}
 					}
 					
 					if (
