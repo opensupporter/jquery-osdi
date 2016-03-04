@@ -38,7 +38,7 @@ $(document).ready(function() {
 </script>
 ```
 
-A demo with more examples is available in the `demo.html` file in the repository.
+A demo with more examples is available [here](/jquery-osdi/demo.html).
 
 [Back to top...](#)
 
