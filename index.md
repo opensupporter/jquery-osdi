@@ -20,6 +20,9 @@ The jQuery OSDI plugin is called on form tags. It can automatically pick up data
 
 The jQuery OSDI plugin requires jQuery version 1.8 or later.
 
+[Back to top...](#)
+
+
 # Basic Usage & Demo
 
 Include jQuery and the plugin javascript file, then call the jQuery OSDI plugin on a form:
@@ -36,6 +39,8 @@ $(document).ready(function() {
 ```
 
 A demo with more examples is available in the `demo.html` file in the repository.
+
+[Back to top...](#)
 
 
 # Options
@@ -55,6 +60,8 @@ The jQuery OSDI plugin can take various options on initialization. They are:
 |always		|function     |	| A function to be executed after an AJAX POST, no matter success or failure. A passthrough for jQuery's [.always](http://api.jquery.com/jquery.ajax/) function. Can have the same arguments, <code>data|jqXHR</code>, <code>textStatus</code>, and <code>jqXHR|errorThrown</code>.
 |ajax_options		|object     | { type: "POST", dataType: 'json', contentType: 'application/json'}	| An object to be passed through to jQuery's <code>$.ajax()</code> function. See [jQuery's documentation](http://api.jquery.com/jquery.ajax/) for available options.
 
+[Back to top...](#)
+
 
 # Form Input Names
 
@@ -71,3 +78,5 @@ If you omit the <code>body</code> option, the jQuery OSDI plugin will attempt to
 |postal_code		|postal_addresses[postal_code]     |The region specific postal code, such as a zip code.
 |country		|postal_addresses[country]     |The country code according to ISO 3166-1 Alpha-2.
 |phone_number		|phone_numbers[number]     |The phone number of the person. Must including country code and must be numeric characters only.
+
+[Back to top...](#)
