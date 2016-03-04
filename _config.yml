@@ -1,0 +1,18 @@
+# Site settings
+title: jQuery OSDI -- A jQuery plugin for non-authenticated OSDI POST
+subtitle: ""
+email: info@opensupporter.org
+description: "jQuery OSDI -- A jQuery plugin for non-authenticated OSDI POST"
+
+# Enable/show navigation. There are there options:
+#   0 - always hide
+#   1 - always show
+#   2 - show only if posts are present
+navigation: 1
+
+# Build settings
+markdown: kramdown
+highlighter: pygments
+permalink: none
+kramdown:
+    input: GFM
