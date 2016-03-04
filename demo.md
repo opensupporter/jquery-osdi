@@ -36,3 +36,5 @@ In this example, the plugin is called with custom options, including a custom bu
 ### Code
 		
 {% include custom-code.md %}
+
+{% include javascripts.html %}
