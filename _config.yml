@@ -3,6 +3,7 @@ title: jQuery OSDI -- A jQuery plugin for non-authenticated OSDI POST
 subtitle: ""
 email: info@opensupporter.org
 description: "jQuery OSDI -- A jQuery plugin for non-authenticated OSDI POST"
+baseurl: "/jquery-osdi"
 
 # Enable/show navigation. There are there options:
 #   0 - always hide
