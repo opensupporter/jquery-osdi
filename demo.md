@@ -14,6 +14,8 @@ The plugin is called on a form and can contain various options, explained in mor
                     
 In this example, the plugin is called over a form with default options. It will use the form's `action` attribute as the OSDI API endpoint to POST to, and it will use the data entered in the form inputs (which are specially named so the plugin can pick them up) as the POST body. It will tell the server to send an autoresponse email as well (which is the default).
 
+*(Note: This demo points to a non-working API endpoint, so while the plugin will execute, the actual POST will always fail.)*
+
 ### Demo
 
 {% include simple-example.html %}
@@ -28,6 +30,8 @@ In this example, the plugin is called over a form with default options. It will 
 ## Custom Example
                     
 In this example, the plugin is called with custom options, including a custom built body JSON instead of one derived from the form inputs directly, a custom endpoint instead of the one specified by the form's `action` attribute, custom AJAX event handlers, the `add_tags` option, and the autoresponse is suppressed.
+
+*(Note: This demo points to a non-working API endpoint, so while the plugin will execute, the actual POST will always fail.)*
 					
 ### Demo
 
