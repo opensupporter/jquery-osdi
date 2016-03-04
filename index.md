@@ -53,7 +53,7 @@ The jQuery OSDI plugin can take various options on initialization. They are:
 |done		|function     |	| A function to be executed after a successful AJAX POST. A passthrough for jQuery's [.done](http://api.jquery.com/jquery.ajax/) callback. Can have the same arguments, <code>data</code>, <code>textStatus</code>, and <code>jqXHR</code>.
 |fail		|function     |	| A function to be executed after a failed AJAX POST. A passthrough for jQuery's [.fail](http://api.jquery.com/jquery.ajax/) callback. Can have the same arguments, <code>jqXHR</code>, <code>textStatus</code>, and <code>errorThrown</code>.
 |always		|function     |	| A function to be executed after an AJAX POST, no matter success or failure. A passthrough for jQuery's [.always](http://api.jquery.com/jquery.ajax/) function. Can have the same arguments, <code>data|jqXHR</code>, <code>textStatus</code>, and <code>jqXHR|errorThrown</code>.
-|ajax_options		|object     | {% include ajax-options-js.html %}   | An object to be passed through to jQuery's <code>$.ajax()</code> function. See [jQuery's documentation](http://api.jquery.com/jquery.ajax/) for available options.
+|ajax_options		|object     | { type: "POST", dataType: 'json', contentType: 'application/json'}	| An object to be passed through to jQuery's <code>$.ajax()</code> function. See [jQuery's documentation](http://api.jquery.com/jquery.ajax/) for available options.
 
 
 # Form Input Names
