@@ -43,7 +43,7 @@ A demo with more examples is available in the `demo.html` file in the repository
 The jQuery OSDI plugin can take various options on initialization. They are:
 
 | Name          | Type      | Default      	| Description
-|-----------    |-----------|--------------	|------------
+|-----------	|-----------	|--------------	|------------
 |endpoint		|string     |Your form's <code>action</code> attribute.	| The endpoint to POST to.
 |body		|function     |Created from your form's inputs. (See [below](#form-input-names) for special naming conventions.)	| A function that returns the JSON that will be POSTed to the endpoint, which is called when the form is submitted. Should be valid OSDI for the endpoint, typically OSDI helper POST format containing at least a person object. [See the OSDI documentation form more information and examples.](http://opensupporter.github.io/osdi-docs/) If not present, a body will be created from your form inputs. (See [below](#form-input-names) for more information.)
 |status		|string/boolean     |subscribed	|The email subscription status the server should be asked to set the person to. Valid options typically are: `"subscribed"`, `"unsubscribed"`, `"bouncing"`, `"spam complaint"`. Use `false` to pass no status, which typically means the person's current status will be unchanged by the server. (Ignored if `body` is present.)
