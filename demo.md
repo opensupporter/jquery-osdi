@@ -15,9 +15,13 @@ The plugin is called on a form and can contain various options, explained in mor
                     
 In this example, the plugin is called over a form with default options. It will use the form's `action` attribute as the OSDI API endpoint to POST to, and it will use the data entered in the form inputs (which are specially named so the plugin can pick them up) as the POST body. It will tell the server to send an autoresponse email as well (which is the default).
 
-{% include simple-example-head.html %}		
-{% include simple-code.md %}				
-{% include simple-example-foot.html %}		
+### Demo
+
+{% include simple-example.html %}
+
+### Code
+		
+{% include simple-code.md %}	
 					
 [Back to top...](#)
 
