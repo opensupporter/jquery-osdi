@@ -1,8 +1,4 @@
-<div class="row-fluid">
-						<div class="span6">
-							<h4>Demo:</h4>
-							
-							<div id="simple-demo-wrap">
+```html
 <form id="simple-demo" action="https://osdi-sample-system.com/api/v1/petitions/41e14e41-3ba5-4304-8b6e-2dddcd528f98/signatures"  method="post">
 	
 	<label>First Name:</label>
@@ -36,12 +32,10 @@
 		<button type="submit" id="simple_submit" value="Submit" class="btn-primary btn">Submit</button>
 	</div>
 </form>
-							</div>
-						</div>
-						
-						<div class="span6">
-							<h4>Code:</h4>
-							
-{% include simple-code.md %}	
-						</div>
-					</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#simple-demo').osdi();
+});
+</script>
+```
