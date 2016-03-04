@@ -1,9 +1,14 @@
-# jquery-osdi
+---
+layout: default
+title: jQuery OSDI -- A jQuery plugin for non-authenticated OSDI POST
+
+---
+# jQuery-OSDI
 The jQuery OSDI plugin implements non-authenticated POST via AJAX against OSDI-compliant API endpoints. It can be used to send in data to OSDI-compliant APIs.
 
 *Version 0.1.0*
 
-#Overview & Requirements
+# Overview & Requirements
 
 The jQuery OSDI plugin attaches to form DOM markup and processes form input to send to OSDI-compliant APIs via AJAX. It can be used to create frontend forms that submit data over an OSDI-complaint API to a remote server.
 
@@ -15,11 +20,14 @@ The jQuery OSDI plugin is called on form tags. It can automatically pick up data
 
 The jQuery OSDI plugin requires jQuery version 1.8 or later.
 
-#Basic Usage & Demo
+[Back to top...](#)
+
+
+# Basic Usage & Demo
 
 Include jQuery and the plugin javascript file, then call the jQuery OSDI plugin on a form:
 
-```
+```javascript
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" type="text/javascript"></script> 
 <script src="jquery.osdi.js" type="text/javascript"></script>
 
@@ -30,15 +38,18 @@ $(document).ready(function() {
 </script>
 ```
 
-A demo with more examples is available in the `demo.html` file in the repository.
+A demo with more examples is available [here](http://opensupporter.github.io/jquery-osdi/demo.html).
+
+[Back to top...](#)
 
 
-#Options
+# Options
 
 The jQuery OSDI plugin can take various options on initialization. They are:
 
-| Name          | Type      | Default      	| Description
-|-----------    |-----------|--------------	|------------
+
+| Name          | Type        | Default         | Description
+|-----------    |----------   |--------------   |--------------
 |endpoint		|string     |Your form's <code>action</code> attribute.	| The endpoint to POST to.
 |body		|function     |Created from your form's inputs. (See [below](#form-input-names) for special naming conventions.)	| A function that returns the JSON that will be POSTed to the endpoint, which is called when the form is submitted. Should be valid OSDI for the endpoint, typically OSDI helper POST format containing at least a person object. [See the OSDI documentation form more information and examples.](http://opensupporter.github.io/osdi-docs/) If not present, a body will be created from your form inputs. (See [below](#form-input-names) for more information.)
 |status		|string/boolean     |subscribed	|The email subscription status the server should be asked to set the person to. Valid options typically are: `"subscribed"`, `"unsubscribed"`, `"bouncing"`, `"spam complaint"`. Use `false` to pass no status, which typically means the person's current status will be unchanged by the server. (Ignored if `body` is present.)
@@ -47,10 +58,12 @@ The jQuery OSDI plugin can take various options on initialization. They are:
 |done		|function     |	| A function to be executed after a successful AJAX POST. A passthrough for jQuery's [.done](http://api.jquery.com/jquery.ajax/) callback. Can have the same arguments, <code>data</code>, <code>textStatus</code>, and <code>jqXHR</code>.
 |fail		|function     |	| A function to be executed after a failed AJAX POST. A passthrough for jQuery's [.fail](http://api.jquery.com/jquery.ajax/) callback. Can have the same arguments, <code>jqXHR</code>, <code>textStatus</code>, and <code>errorThrown</code>.
 |always		|function     |	| A function to be executed after an AJAX POST, no matter success or failure. A passthrough for jQuery's [.always](http://api.jquery.com/jquery.ajax/) function. Can have the same arguments, <code>data|jqXHR</code>, <code>textStatus</code>, and <code>jqXHR|errorThrown</code>.
-|ajax_options		|object     | ```{ type: "POST", dataType: 'json', contentType: 'application/json'}```	| An object to be passed through to jQuery's <code>$.ajax()</code> function. See [jQuery's documentation](http://api.jquery.com/jquery.ajax/) for available options.
+|ajax_options		|object     | { type: "POST", dataType: 'json', contentType: 'application/json'}	| An object to be passed through to jQuery's <code>$.ajax()</code> function. See [jQuery's documentation](http://api.jquery.com/jquery.ajax/) for available options.
+
+[Back to top...](#)
 
 
-#Form Input Names
+# Form Input Names
 
 If you omit the <code>body</code> option, the jQuery OSDI plugin will attempt to create an OSDI-compliant JSON body to POST for you, using the inputs in your form. Specifically, it will create an inline [person object](http://opensupporter.github.io/osdi-docs/people.html) to use as part of the OSDI helper format. Use these special names on your form inputs to tell the plugin which input corresponds to which piece of data:
 
@@ -65,3 +78,5 @@ If you omit the <code>body</code> option, the jQuery OSDI plugin will attempt to
 |postal_code		|postal_addresses[postal_code]     |The region specific postal code, such as a zip code.
 |country		|postal_addresses[country]     |The country code according to ISO 3166-1 Alpha-2.
 |phone_number		|phone_numbers[number]     |The phone number of the person. Must including country code and must be numeric characters only.
+
+[Back to top...](#)
