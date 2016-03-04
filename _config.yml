@@ -12,7 +12,7 @@ navigation: 1
 
 # Build settings
 markdown: kramdown
-highlighter: pygments
+highlighter: rouge
 permalink: none
 kramdown:
     input: GFM
