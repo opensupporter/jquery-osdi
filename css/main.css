@@ -1,0 +1,112 @@
+body {
+    font-weight: 400;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
+}
+
+pre, code {
+    border: none;
+    border-radius: 0;
+    background-color: #f9f9f9;
+    font-size: 0.85em;
+}
+
+pre {
+    font-size: 1em;
+}
+
+code {
+    color: inherit;
+}
+
+#header {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+#header a:hover {
+    text-decoration: none;
+}
+
+#footer {
+    margin: 20px 0;
+    font-size: 0.85em;
+    color: #999;
+    text-align: center;
+}
+
+#content > .page-header:first-child {
+    margin-top: 0;
+}
+
+#content > .page-header:first-child h2 {
+    margin-top: 0;
+}
+
+
+#navigation {
+    font-size: 0.9em;
+}
+
+#navigation li a {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#navigation .nav-header {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+
+
+
+table {
+width:100%;
+overflow:auto;
+display:block;
+margin-bottom: 2em;
+}
+
+table th, table td {
+border:1px solid #ddd;
+padding:6px 13px;
+}
+
+table tr {
+border-top:1px solid #ccc;
+background-color:#fff;
+}
+
+table tr:nth-child(2n) {
+background-color:#f8f8f8;
+}
+
+h1, h2, h3, h4 {
+	margin-top: 1em;
+	margin-bottom: 16px;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	font-size: 2.25em;
+	line-height: 1.2;
+	border-bottom: 1px solid #eee;
+}
+
+h2 {
+	padding-bottom: 0.3em;
+	font-size: 1.75em;
+	line-height: 1.225;
+	border-bottom: 1px solid #eee;
+}
+
+h3 {
+	font-size: 1.5em;
+	line-height: 1.43;
+}
+
+h4 {
+	font-size: 1.25em;
+	line-height: 1.43;
+}
