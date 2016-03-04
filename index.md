@@ -44,6 +44,7 @@ The jQuery OSDI plugin can take various options on initialization. They are:
 
 | Form Name          | OSDI Field      | Description
 |-----------    |-----------|--------------
+|given_name		|given_name     |The person's first name.
 
 
 | Name2         | Type     | Default		| Description
