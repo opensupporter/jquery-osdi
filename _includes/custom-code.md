@@ -38,7 +38,7 @@ $(document).ready(function() {
       $('#success').html('<p><strong>It worked!</strong></p>');
     },
     fail: function(jqXHR, textStatus, errorThrown) {
-      console.log('fail');
+      $('#success').html('<p><strong>It failed!</strong></p>');
     },
     always: function(data_jqXHR, textStatus, jqXHR_errorThrown) {
       console.log('always');
