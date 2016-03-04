@@ -3,15 +3,15 @@ layout: default
 title: jQuery OSDI -- A jQuery plugin for non-authenticated OSDI POST
 
 ---
-	                <h1>jQuery OSDI Plugin</h1>
+#jQuery OSDI Plugin
 	                
-	                <p>The jQuery OSDI plugin implements non-authenticated POST via AJAX against OSDI-compliant API endpoints.</p>
+The jQuery OSDI plugin implements non-authenticated POST via AJAX against OSDI-compliant API endpoints.
 	                
-	                <p>The plugin is called on a form and can contain various options, explained in more detail <a href="https://github.com/opensupporter/jquery-osdi">here</a>. See the demo below for some examples on how it can be used.</p>
+The plugin is called on a form and can contain various options, explained in more detail <a href="https://github.com/opensupporter/jquery-osdi">here</a>. See the demo below for some examples on how it can be used.
 	                
-                    <h2 id="simple">Simple Form Example</h2>
+##Simple Form Example
                     
-                    <p>In this example, the plugin is called over a form with default options. It will use the form's <code>action</code> attribute as the OSDI API endpoint to POST to, and it will use the data entered in the form inputs (which are specially named so the plugin can pick them up) as the POST body. It will tell the server to send an autoresponse email as well (which is the default).</p>
+In this example, the plugin is called over a form with default options. It will use the form's <code>action</code> attribute as the OSDI API endpoint to POST to, and it will use the data entered in the form inputs (which are specially named so the plugin can pick them up) as the POST body. It will tell the server to send an autoresponse email as well (which is the default).
 					
 					<div class="row-fluid">
 						<div class="span6">
