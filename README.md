@@ -1,7 +1,7 @@
 # jQuery-OSDI
 The jQuery OSDI plugin implements non-authenticated POST via AJAX against OSDI-compliant API endpoints. It can be used to send in data to OSDI-compliant APIs.
 
-*Version 0.1.0*
+*Version 0.1.1*
 
 # Overview & Requirements
 
@@ -50,6 +50,7 @@ The jQuery OSDI plugin can take various options on initialization. They are:
 |status		|string/boolean     |subscribed	|The email subscription status the server should be asked to set the person to. Valid options typically are: `"subscribed"`, `"unsubscribed"`, `"bouncing"`, `"spam complaint"`. Use `false` to pass no status, which typically means the person's current status will be unchanged by the server. (Ignored if `body` is present.)
 |autoresponse		|boolean     |true	| Whether the receiving server should asked to send an email autoresponse. (Ignored if `body` is present.)
 |add_tags		|array     |	| An array of tags the server should be asked to add to the person. (Ignored if `body` is present.)
+|immediate      |boolean   | false    | Whether the AJAX POST should be called immediately or rather attached as a submit event to the form, to be called when the form is submitted. Calling immediately is useful when using other plugins that attach to the form submit event, such as validation plugins, where you can immediately call the AJAX POST if the form is valid.
 |done		|function     |	| A function to be executed after a successful AJAX POST. A passthrough for jQuery's [.done](http://api.jquery.com/jquery.ajax/) callback. Can have the same arguments, <code>data</code>, <code>textStatus</code>, and <code>jqXHR</code>.
 |fail		|function     |	| A function to be executed after a failed AJAX POST. A passthrough for jQuery's [.fail](http://api.jquery.com/jquery.ajax/) callback. Can have the same arguments, <code>jqXHR</code>, <code>textStatus</code>, and <code>errorThrown</code>.
 |always		|function     |	| A function to be executed after an AJAX POST, no matter success or failure. A passthrough for jQuery's [.always](http://api.jquery.com/jquery.ajax/) function. Can have the same arguments, <code>data|jqXHR</code>, <code>textStatus</code>, and <code>jqXHR|errorThrown</code>.

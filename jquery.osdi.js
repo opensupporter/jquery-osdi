@@ -4,8 +4,8 @@
 	
 	Submit forms to OSDI-compatible systems using OSDI's non-authenticated POST functions and triggers. Requires jQuery 1.8 or above. More info on OSDI at http://opensupporter.org/
 	
-	Version: 0.1.0
-	Last Updated: February 24, 2016
+	Version: 0.1.1
+	Last Updated: March 4, 2016
 	Authors: Jason Rosenbaum
 	Repository & License: 
 	
@@ -34,10 +34,15 @@
 				fail: function() {},
 				always: function() {},
 				status: "subscribed",
+				immediate: false,
 				ajax_options: {
 					type: "POST",
 					dataType: 'json',
 					contentType: 'application/json'
+				}
+			},
+			methods = {
+				submit: function() {
 				}
 			};
 
@@ -55,7 +60,13 @@
 			this._defaults = defaults;
 			this._name = pluginName;
 			this.init(this.$element);
+			
+			this.submit = function() {
+			    this.submit_handler(this.$element, this);
+			};
 		}
+		
+		
 
 		// Avoid Plugin.prototype conflicts
 		$.extend( Plugin.prototype, {
@@ -83,50 +94,59 @@
 				}
 			},
 			form_submit: function ( $element, that ) {
-				$element.on('submit', function() {
+				//console.log(that.settings.immediate);
+				if (that.settings.immediate) {
+					that.submit_handler($element, that);
+				} else {
+					$element.on('submit', function() {
+						that.submit_handler($element, that);
+					});
+				}
+			},
+			submit_handler: function( $element, that ) {
+				//console.log('submithandler');
+				//console.log($element);
+				//console.log(that);
+				if (that.validate_submit( $element )) {
+					var	body,
+						endpoint,
+						ajax_options,
+						done,
+						fail,
+						always;
 					
-					// can we submit the form?
-					if (that.validate_submit( $element )) {
-						var	body,
-							endpoint,
-							ajax_options,
-							done,
-							fail,
-							always;
-						
-						body = that.create_body($element);
-						
-						if (that.settings.endpoint && that.settings.endpoint != '') {
-							endpoint = that.settings.endpoint;
-						} else {
-							endpoint = $element.attr('action');
-						}
-						
-						ajax_options = {
-							url: endpoint,
-							data: JSON.stringify(body),
-						}
-						
-						ajax_options = $.extend( ajax_options, that.settings.ajax_options ); 
-						
-						done = that.settings.done;
-						fail = that.settings.fail;
-						always = that.settings.always;
-						
-						//console.log(body);
-						//console.log(JSON.stringify(body));
-						//console.log(endpoint);
-						//console.log(ajax_options);
-						//console.log(done);
-						//console.log(fail);
-						//console.log(always);
-						
-						that.perform_ajax(ajax_options, done, fail, always);
+					body = that.create_body($element);
+					
+					if (that.settings.endpoint && that.settings.endpoint != '') {
+						endpoint = that.settings.endpoint;
+					} else {
+						endpoint = $element.attr('action');
 					}
 					
-					// stop normal form submission
-					return false;
-				});
+					ajax_options = {
+						url: endpoint,
+						data: JSON.stringify(body),
+					}
+					
+					ajax_options = $.extend( ajax_options, that.settings.ajax_options ); 
+					
+					done = that.settings.done;
+					fail = that.settings.fail;
+					always = that.settings.always;
+					
+					//console.log(body);
+					//console.log(JSON.stringify(body));
+					//console.log(endpoint);
+					//console.log(ajax_options);
+					//console.log(done);
+					//console.log(fail);
+					//console.log(always);
+					
+					that.perform_ajax(ajax_options, done, fail, always);
+				}
+						
+				// stop normal form submission
+				return false;
 			},
 			validate_submit: function( $element ) {
 				if (this.validate_endpoint($element) && this.validate_add_tags()
@@ -301,8 +321,16 @@
 				if ( !$.data( this, "plugin_" + pluginName ) ) {
 					$.data( this, "plugin_" +
 						pluginName, new Plugin( this, options ) );
+				} else {
+					//console.log($.data( this, "plugin_" + pluginName ));
+					//console.log(options);
+					
+					//$(this).osdi().submit;
+					$.data( this, "plugin_" + pluginName ).submit();
 				}
 			} );
 		};
+		
+		
 
 } )( jQuery, window, document );
