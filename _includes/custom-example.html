@@ -1,34 +1,27 @@
-<div class="row-fluid">
-						<div class="span6">
-							<h4>Demo:</h4>
-							
-							<div id="custom-demo-wrap">				
 <form id="custom-demo" action="/" method="post">
-
-	<p>First Name:</p>
-	<select name="first" id="first">
-		<option value="">[choose one]</option>
-		<option value="Adam">Adam</option>
-		<option value="Eve">Eve</option>
-	</select>
-	
-	<label>Email Address:</label>
-	<input type="text" name="email_address" id="email" />
-	
-	<div>
-		<button type="submit" id="custom_submit" value="Submit" class="btn-primary btn">Submit</button>
-	</div>
-	
-	<div id="success">
+	<div class="row-fluid">
+		<div class="span3">
+			<label>First Name:</label>
+			<select name="first" id="first">
+				<option value="">[choose one]</option>
+				<option value="Adam">Adam</option>
+				<option value="Eve">Eve</option>
+			</select>
+		</div>
+		
+		<div class="span3">	
+			<label>Email Address:</label>
+			<input type="text" name="email_address" id="email" />
+		</div>
+			
+		<div class="span3">
+			<label>&nbsp;</label>
+			<button type="submit" id="custom_submit" value="Submit" class="btn-primary btn">Submit</button>
+		</div>
+		
+		<div class="span3">
+			<label>&nbsp;</label>
+			<div id="success"></div>
+		</div>
 	</div>
 </form>
-							</div>
-						</div>
-						
-						<div class="span6">
-							<h4>Code:</h4>
-							
-{% include custom-code.md %}								
-
-						</div>
-					</div>

@@ -29,8 +29,10 @@ In this example, the plugin is called over a form with default options. It will 
                     
 In this example, the plugin is called with custom options, including a custom built body JSON instead of one derived from the form inputs directly, a custom endpoint instead of the one specified by the form's `action` attribute, custom AJAX event handlers, the `add_tags` option, and the autoresponse is suppressed.
 					
-{% include custom-example.html %}
-					
-[Back to top...](#)
+### Demo
 
-{% include javascripts.html %}
+{% include custom-example.html %}
+
+### Code
+		
+{% include custom-code.md %}
