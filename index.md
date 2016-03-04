@@ -8,7 +8,7 @@ The jQuery OSDI plugin implements non-authenticated POST via AJAX against OSDI-c
 
 *Version 0.1.0*
 
-# Overview & Requirements
+## Overview & Requirements
 
 The jQuery OSDI plugin attaches to form DOM markup and processes form input to send to OSDI-compliant APIs via AJAX. It can be used to create frontend forms that submit data over an OSDI-complaint API to a remote server.
 
@@ -20,7 +20,7 @@ The jQuery OSDI plugin is called on form tags. It can automatically pick up data
 
 The jQuery OSDI plugin requires jQuery version 1.8 or later.
 
-# Basic Usage & Demo
+## Basic Usage & Demo
 
 Include jQuery and the plugin javascript file, then call the jQuery OSDI plugin on a form:
 
@@ -38,12 +38,13 @@ $(document).ready(function() {
 A demo with more examples is available in the `demo.html` file in the repository.
 
 
-# Options
+## Options
 
 The jQuery OSDI plugin can take various options on initialization. They are:
 
 | Name          | Type      | Description
 |-----------    |-----------|-----------|--------------
+|self			|[Item*](items.html)	|A self-referential link to the item.
 
 
 
@@ -58,7 +59,7 @@ The jQuery OSDI plugin can take various options on initialization. They are:
 |ajax_options		|object     | ```{ type: "POST", dataType: 'json', contentType: 'application/json'}```	| An object to be passed through to jQuery's <code>$.ajax()</code> function. See [jQuery's documentation](http://api.jquery.com/jquery.ajax/) for available options.
 
 
-# Form Input Names
+## Form Input Names
 
 If you omit the <code>body</code> option, the jQuery OSDI plugin will attempt to create an OSDI-compliant JSON body to POST for you, using the inputs in your form. Specifically, it will create an inline [person object](http://opensupporter.github.io/osdi-docs/people.html) to use as part of the OSDI helper format. Use these special names on your form inputs to tell the plugin which input corresponds to which piece of data:
 
