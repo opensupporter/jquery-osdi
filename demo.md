@@ -3,7 +3,7 @@ layout: default
 title: jQuery OSDI Demo
 
 ---
-# jQuery OSDI Plugin
+# jQuery OSDI Demo
 	                
 The jQuery OSDI plugin implements non-authenticated POST via AJAX against OSDI-compliant API endpoints.
 	                

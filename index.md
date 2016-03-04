@@ -3,7 +3,7 @@ layout: default
 title: jQuery OSDI -- A jQuery plugin for non-authenticated OSDI POST
 
 ---
-# jquery-osdi
+# jQuery-OSDI
 The jQuery OSDI plugin implements non-authenticated POST via AJAX against OSDI-compliant API endpoints. It can be used to send in data to OSDI-compliant APIs.
 
 *Version 0.1.0*
