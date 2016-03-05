@@ -62,7 +62,7 @@
 			this.init(this.$element);
 			
 			this.submit = function() {
-			    this.submit_handler(this.$element, this);
+			    this.form_submit(this.$element, this);
 			};
 		}
 		
