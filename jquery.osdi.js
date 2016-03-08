@@ -284,13 +284,14 @@
 						$.extend( body.person, email_address );
 						
 						// add status here, if we have email
-						if (this.settings.status) {
-							if (typeof(this.settings.status) == 'function') {
+						if (typeof(this.settings.status) == 'function') {
+							if (this.settings.status() !== false) {
 								body.person.email_addresses[0].status = this.settings.status();
-							} else {
+							}
+						} else {
+							if (this.settings.status !== false) {
 								body.person.email_addresses[0].status = this.settings.status;
 							}
-							
 						}
 					}
 					
