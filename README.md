@@ -40,21 +40,23 @@ A demo with more examples is available [here](http://opensupporter.github.io/jqu
 
 # Options
 
-The jQuery OSDI plugin can take various options on initialization. They are:
+The jQuery OSDI plugin can take various options on initialization. Typically, options can be passed on initialization, or can be passed as functions, which are called when the form is submitted. This is useful if you want to dynamically populate options on submit. 
+
+The available options are:
 
 
 | Name          | Type        | Default         | Description
 |-----------    |----------   |--------------   |--------------
-|endpoint		|string     |Your form's <code>action</code> attribute.	| The endpoint to POST to.
-|body		|function     |Created from your form's inputs. (See [below](#form-input-names) for special naming conventions.)	| A function that returns the JSON that will be POSTed to the endpoint, which is called when the form is submitted. Should be valid OSDI for the endpoint, typically OSDI helper POST format containing at least a person object. [See the OSDI documentation form more information and examples.](http://opensupporter.github.io/osdi-docs/) If not present, a body will be created from your form inputs. (See [below](#form-input-names) for more information.)
-|status		|string/boolean     |subscribed	|The email subscription status the server should be asked to set the person to. Valid options typically are: `"subscribed"`, `"unsubscribed"`, `"bouncing"`, `"spam complaint"`. Use `false` to pass no status, which typically means the person's current status will be unchanged by the server. (Ignored if `body` is present.)
-|autoresponse		|boolean     |true	| Whether the receiving server should asked to send an email autoresponse. (Ignored if `body` is present.)
-|add_tags		|array     |	| An array of tags the server should be asked to add to the person. (Ignored if `body` is present.)
+|endpoint		|string     |Your form's <code>action</code> attribute.	| The endpoint to POST to. Can optionally take a function that returns a string.
+|body		|JSON object     |Created from your form's inputs. (See [below](#form-input-names) for special naming conventions.)	| The JSON that will be POSTed to the endpoint. Should be valid OSDI for the endpoint, typically OSDI helper POST format containing at least a person object. [See the OSDI documentation form more information and examples.](http://opensupporter.github.io/osdi-docs/) If not present, a body will be created from your form inputs. Can optionally take a function that returns a JSON object. (See [below](#form-input-names) for more information.)
+|status		|string/boolean     |subscribed	|The email subscription status the server should be asked to set the person to. Valid options typically are: `"subscribed"`, `"unsubscribed"`, `"bouncing"`, `"spam complaint"`. Use `false` to pass no status, which typically means the person's current status will be unchanged by the server. Can optionally take a function that returns a string/boolean. (Ignored if `body` is present.)
+|autoresponse		|boolean     |true	| Whether the receiving server should asked to send an email autoresponse. Can optionally take a function that returns a boolean. (Ignored if `body` is present.)
+|add_tags		|array     |	| An array of tags the server should be asked to add to the person. Can optionally take a function that returns an array. (Ignored if `body` is present.)
 |immediate      |boolean   | false    | Whether the AJAX POST should be called immediately or rather attached as a submit event to the form, to be called when the form is submitted. Calling immediately is useful when using other plugins that attach to the form submit event, such as validation plugins, where you can immediately call the AJAX POST if the form is valid.
 |done		|function     |	| A function to be executed after a successful AJAX POST. A passthrough for jQuery's [.done](http://api.jquery.com/jquery.ajax/) callback. Can have the same arguments, <code>data</code>, <code>textStatus</code>, and <code>jqXHR</code>.
 |fail		|function     |	| A function to be executed after a failed AJAX POST. A passthrough for jQuery's [.fail](http://api.jquery.com/jquery.ajax/) callback. Can have the same arguments, <code>jqXHR</code>, <code>textStatus</code>, and <code>errorThrown</code>.
 |always		|function     |	| A function to be executed after an AJAX POST, no matter success or failure. A passthrough for jQuery's [.always](http://api.jquery.com/jquery.ajax/) function. Can have the same arguments, <code>data|jqXHR</code>, <code>textStatus</code>, and <code>jqXHR|errorThrown</code>.
-|ajax_options		|object     | { type: "POST", dataType: 'json', contentType: 'application/json'}	| An object to be passed through to jQuery's <code>$.ajax()</code> function. See [jQuery's documentation](http://api.jquery.com/jquery.ajax/) for available options.
+|ajax_options		|JSON object     | { type: "POST", dataType: 'json', contentType: 'application/json'}	| An object to be passed through to jQuery's <code>$.ajax()</code> function. See [jQuery's documentation](http://api.jquery.com/jquery.ajax/) for available options. Can optionally take a function that returns a JSON object.
 
 [Back to top...](#)
 

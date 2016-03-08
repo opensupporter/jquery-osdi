@@ -4,8 +4,8 @@
 	
 	Submit forms to OSDI-compatible systems using OSDI's non-authenticated POST functions and triggers. Requires jQuery 1.8 or above. More info on OSDI at http://opensupporter.org/
 	
-	Version: 0.1.1
-	Last Updated: March 4, 2016
+	Version: 0.1.2
+	Last Updated: March 8, 2016
 	Authors: Jason Rosenbaum
 	Repository & License: 
 	
@@ -100,6 +100,9 @@
 				} else {
 					$element.on('submit', function() {
 						that.submit_handler($element, that);
+						
+						// stop normal form submission
+						return false;
 					});
 				}
 			},
@@ -118,7 +121,11 @@
 					body = that.create_body($element);
 					
 					if (that.settings.endpoint && that.settings.endpoint != '') {
-						endpoint = that.settings.endpoint;
+						if (typeof(that.settings.endpoint) == 'function') {
+							endpoint = that.settings.endpoint();
+						} else {
+							endpoint = that.settings.endpoint;
+						}
 					} else {
 						endpoint = $element.attr('action');
 					}
@@ -128,7 +135,12 @@
 						data: JSON.stringify(body),
 					}
 					
-					ajax_options = $.extend( ajax_options, that.settings.ajax_options ); 
+					if (typeof(that.settings.ajax_options) == 'function') {
+						ajax_options = $.extend( ajax_options, that.settings.ajax_options() ); 
+					} else {
+						ajax_options = $.extend( ajax_options, that.settings.ajax_options ); 
+					}
+					
 					
 					done = that.settings.done;
 					fail = that.settings.fail;
@@ -145,8 +157,7 @@
 					that.perform_ajax(ajax_options, done, fail, always);
 				}
 						
-				// stop normal form submission
-				return false;
+				
 			},
 			validate_submit: function( $element ) {
 				if (this.validate_endpoint($element) && this.validate_add_tags()
@@ -174,12 +185,22 @@
 				//console.log(!$.isArray(this.settings.add_tags));
 				//console.log(this.settings.add_tags.length <= 0);
 				if (this.settings.add_tags) {
-					if (!$.isArray(this.settings.add_tags) || !this.settings.add_tags.length > 0) {
-						console.log('JQUERY OSDI ERROR: The add_tags option is not a valid array of at least one element. You must pass an array with at least one element to the jQuery OSDI plugin to add tags.');
-						return false;
+					if (typeof(this.settings.add_tags) == 'function') {
+						if (!$.isArray(this.settings.add_tags()) || !this.settings.add_tags().length > 0) {
+							console.log('JQUERY OSDI ERROR: The add_tags option is not a valid array of at least one element. You must pass an array with at least one element to the jQuery OSDI plugin to add tags.');
+							return false;
+						} else {
+							return true;
+						}
 					} else {
-						return true;
+						if (!$.isArray(this.settings.add_tags) || !this.settings.add_tags.length > 0) {
+							console.log('JQUERY OSDI ERROR: The add_tags option is not a valid array of at least one element. You must pass an array with at least one element to the jQuery OSDI plugin to add tags.');
+							return false;
+						} else {
+							return true;
+						}
 					}
+					
 				} else {
 					return true;
 				}
@@ -194,28 +215,51 @@
 					add_tags;
 				
 				if (this.settings.body) {
-					body = this.settings.body();
+					if (typeof(this.settings.body) == 'function') {
+						body = this.settings.body();
+					} else {
+						body = this.settings.body;
+					}
 				} else {
 					body = {
 						"person" : {}
 					}
 					
-					if (this.settings.autoresponse) {
-						autoresponse = {
-							"triggers" : {
-								"autoresponse" : {
-									"enabled" : true
+					if (typeof(this.settings.autoresponse) == 'function') {
+						if (this.settings.autoresponse() === true) {
+							autoresponse = {
+								"triggers" : {
+									"autoresponse" : {
+										"enabled" : true
+									}
 								}
 							}
 						}
-						
-						$.extend( body, autoresponse );
+					} else if (this.settings.autoresponse) {
+						if (this.settings.autoresponse === true) {
+							autoresponse = {
+								"triggers" : {
+									"autoresponse" : {
+										"enabled" : true
+									}
+								}
+							}
+						}
 					}
 					
+					$.extend( body, autoresponse );
+					
 					if (this.settings.add_tags) {
-						add_tags = {
-							"add_tags": this.settings.add_tags
-						};
+						if (typeof(this.settings.add_tags) == 'function') {
+							add_tags = {
+								"add_tags": this.settings.add_tags()
+							}
+						} else {
+							add_tags = {
+								"add_tags": this.settings.add_tags
+							};
+						}
+						
 						
 						$.extend( body, add_tags );
 					}
@@ -241,7 +285,12 @@
 						
 						// add status here, if we have email
 						if (this.settings.status) {
-							body.person.email_addresses[0].status = this.settings.status;
+							if (typeof(this.settings.status) == 'function') {
+								body.person.email_addresses[0].status = this.settings.status();
+							} else {
+								body.person.email_addresses[0].status = this.settings.status;
+							}
+							
 						}
 					}
 					
