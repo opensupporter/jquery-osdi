@@ -1,0 +1,22 @@
+{
+  "name": "jquery-osdi",
+  "version": "1.0.0",
+  "description": "The jQuery OSDI plugin implements non-authenticated POST via AJAX against OSDI-compliant API endpoints. It can be used to send in data to OSDI-compliant APIs.",
+  "main": "jquery.osdi.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/opensupporter/jquery-osdi.git"
+  },
+  "keywords": [
+    "jquery-plugin",
+    "ecosystem:jquery",
+    "osdi",
+    "ajax"
+  ],
+  "author": "Jason Rosenbaum",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/opensupporter/jquery-osdi/issues"
+  },
+  "homepage": "http://opensupporter.github.io/jquery-osdi/"
+}
