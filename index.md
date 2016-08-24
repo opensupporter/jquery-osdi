@@ -10,6 +10,10 @@ The jQuery OSDI plugin implements non-authenticated POST via AJAX against OSDI-c
 
 This plugin is free and open source, licensed under the [MIT open source license](https://github.com/opensupporter/jquery-osdi/blob/master/LICENSE.md).
 
+
+
+
+
 # Overview & Requirements
 
 The jQuery OSDI plugin attaches to form DOM markup and processes form input to send to OSDI-compliant APIs via AJAX. It can be used to create frontend forms that submit data over an OSDI-complaint API to a remote server.
@@ -23,6 +27,13 @@ The jQuery OSDI plugin is called on form tags. It can automatically pick up data
 The jQuery OSDI plugin requires jQuery version 1.8 or later.
 
 [Back to top...](#)
+
+
+# Downloads & Source
+
+You can download the jQuery OSDI plugin file [here](https://raw.githubusercontent.com/opensupporter/jquery-osdi/master/jquery.osdi.js). A minimized version is available [here](https://raw.githubusercontent.com/opensupporter/jquery-osdi/master/jquery.osdi.min.js).
+
+You can view the source and fork the repository on GitHub [here](https://github.com/opensupporter/jquery-osdi).
 
 
 # Basic Usage & Demo
