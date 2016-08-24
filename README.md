@@ -20,7 +20,16 @@ The jQuery OSDI plugin requires jQuery version 1.8 or later.
 [Back to top...](#)
 
 
+# Downloads & Source
+
+You can download the jQuery OSDI plugin file [here](https://raw.githubusercontent.com/opensupporter/jquery-osdi/master/jquery.osdi.js). A minimized version is available [here](https://raw.githubusercontent.com/opensupporter/jquery-osdi/master/jquery.osdi.min.js).
+
+You can view the source and fork the repository on GitHub [here](https://github.com/opensupporter/jquery-osdi).
+
+
 # Basic Usage & Demo
+
+
 
 Include jQuery and the plugin javascript file, then call the jQuery OSDI plugin on a form:
 
