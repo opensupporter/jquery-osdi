@@ -87,5 +87,6 @@ If you omit the <code>body</code> option, the jQuery OSDI plugin will attempt to
 |postal_code		|postal_addresses[postal_code]     |The region specific postal code, such as a zip code.
 |country		|postal_addresses[country]     |The country code according to ISO 3166-1 Alpha-2.
 |phone_number		|phone_numbers[number]     |The phone number of the person. Must including country code and must be numeric characters only.
+|custom_[key]		|custom_fields.[key]			|A custom field for the person. Form name should be the key associated with this custom field, prefixed by "custom_", e.g. <code>custom_member_number</code>.
 
 [Back to top...](#)
