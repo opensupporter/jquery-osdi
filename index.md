@@ -6,13 +6,9 @@ title: jQuery OSDI -- A jQuery plugin for non-authenticated OSDI POST
 # jQuery-OSDI
 The jQuery OSDI plugin implements non-authenticated POST via AJAX against OSDI-compliant API endpoints. It can be used to send in data to OSDI-compliant APIs.
 
-*Version 1.0.0*
+*Version 1.1.0*
 
-This plugin is free and open source, licensed under the [MIT open source license](https://github.com/opensupporter/jquery-osdi/blob/master/LICENSE.md).
-
-
-
-
+This plugin is free and open source, and licensed under the [MIT open source license](https://github.com/opensupporter/jquery-osdi/blob/master/LICENSE.md).
 
 # Overview & Requirements
 
@@ -37,6 +33,8 @@ You can view the source and fork the repository on GitHub [here](https://github.
 
 
 # Basic Usage & Demo
+
+
 
 Include jQuery and the plugin javascript file, then call the jQuery OSDI plugin on a form:
 
@@ -73,7 +71,7 @@ The available options are:
 |immediate      |boolean   | false    | Whether the AJAX POST should be called immediately or rather attached as a submit event to the form, to be called when the form is submitted. Calling immediately is useful when using other plugins that attach to the form submit event, such as validation plugins, where you can immediately call the AJAX POST if the form is valid.
 |done		|function     |	| A function to be executed after a successful AJAX POST. A passthrough for jQuery's [.done](http://api.jquery.com/jquery.ajax/) callback. Can have the same arguments, <code>data</code>, <code>textStatus</code>, and <code>jqXHR</code>.
 |fail		|function     |	| A function to be executed after a failed AJAX POST. A passthrough for jQuery's [.fail](http://api.jquery.com/jquery.ajax/) callback. Can have the same arguments, <code>jqXHR</code>, <code>textStatus</code>, and <code>errorThrown</code>.
-|always		|function     |	| A function to be executed after an AJAX POST, no matter success or failure. A passthrough for jQuery's [.always](http://api.jquery.com/jquery.ajax/) function. Can have the same arguments, <code>data|jqXHR</code>, <code>textStatus</code>, and <code>jqXHR|errorThrown</code>.
+|always		|function     |	| A function to be executed after an AJAX POST, no matter success or failure. A passthrough for jQuery's [.always](http://api.jquery.com/jquery.ajax/) function. Can have the same arguments, <code>data/jqXHR</code>, <code>textStatus</code>, and <code>jqXHR/errorThrown</code>.
 |ajax_options		|JSON object     | { type: "POST", dataType: 'json', contentType: 'application/json'}	| An object to be passed through to jQuery's <code>$.ajax()</code> function. See [jQuery's documentation](http://api.jquery.com/jquery.ajax/) for available options. Can optionally take a function that returns a JSON object.
 
 [Back to top...](#)
@@ -94,5 +92,6 @@ If you omit the <code>body</code> option, the jQuery OSDI plugin will attempt to
 |postal_code		|postal_addresses[postal_code]     |The region specific postal code, such as a zip code.
 |country		|postal_addresses[country]     |The country code according to ISO 3166-1 Alpha-2.
 |phone_number		|phone_numbers[number]     |The phone number of the person. Must including country code and must be numeric characters only.
+|custom[key]		|custom_fields.key			|A custom field for the person. Form name should be the key associated with this custom field, bracketed and prefixed by "custom", e.g. <code>custom[member_number]</code>.
 
 [Back to top...](#)
