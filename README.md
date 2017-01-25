@@ -1,7 +1,7 @@
 # jQuery-OSDI
 The jQuery OSDI plugin implements non-authenticated POST via AJAX against OSDI-compliant API endpoints. It can be used to send in data to OSDI-compliant APIs.
 
-*Version 1.0.0*
+*Version 1.1.0*
 
 This plugin is free and open source, and licensed under the [MIT open source license](https://github.com/opensupporter/jquery-osdi/blob/master/LICENSE.md).
 
@@ -87,5 +87,6 @@ If you omit the <code>body</code> option, the jQuery OSDI plugin will attempt to
 |postal_code		|postal_addresses[postal_code]     |The region specific postal code, such as a zip code.
 |country		|postal_addresses[country]     |The country code according to ISO 3166-1 Alpha-2.
 |phone_number		|phone_numbers[number]     |The phone number of the person. Must including country code and must be numeric characters only.
+|custom[key]		|custom_fields.key			|A custom field for the person. Form name should be the key associated with this custom field, bracketed and prefixed by "custom", e.g. <code>custom[member_number]</code>.
 
 [Back to top...](#)

@@ -4,8 +4,8 @@
 	
 	Submit forms to OSDI-compatible systems using OSDI's non-authenticated POST functions and triggers. Requires jQuery 1.8 or above. More info on OSDI at http://opensupporter.org/
 	
-	Version: 1.0.0
-	Last Updated: March 8, 2016
+	Version: 1.1.0
+	Last Updated: January 11, 2017
 	Authors: Jason Rosenbaum
 	Repository: https://github.com/opensupporter/jquery-osdi
 	License: MIT open source, https://github.com/opensupporter/jquery-osdi/blob/master/LICENSE.md
@@ -189,6 +189,7 @@
 					postal_address,
 					postal_addresses,
 					phone_number,
+					custom_fields,
 					add_tags;
 				
 				if (this.settings.body) {
@@ -324,6 +325,20 @@
 						$.extend( body.person, phone_number );
 					}
 					
+					if ($element.find(':input[name^="custom["]').length) {
+						custom_fields = {};
+
+						$.each($element.find(':input[name^="custom["]').serializeArray(), function() {
+							if (this.value != '') {
+								custom_fields[this.name.replace(/^custom\[|\]$/g, '')] = this.value;
+							}
+						});
+
+						if (!$.isEmptyObject(custom_fields)) {
+							body.person.custom_fields = custom_fields;
+						}
+					}
+
 				}
 				
 				return body;
