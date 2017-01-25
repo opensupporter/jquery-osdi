@@ -325,10 +325,10 @@
 						$.extend( body.person, phone_number );
 					}
 					
-					if ($element.find('input[name^="custom["]').length) {
+					if ($element.find(':input[name^="custom["]').length) {
 						custom_fields = {};
 
-						$.each($element.find('input[name^="custom["]').serializeArray(), function() {
+						$.each($element.find(':input[name^="custom["]').serializeArray(), function() {
 							if (this.value != '') {
 								custom_fields[this.name.replace(/^custom\[|\]$/g, '')] = this.value;
 							}
