@@ -334,7 +334,9 @@
 							}
 						});
 
-						body.person.custom_fields = custom_fields;
+						if (!$.isEmptyObject(custom_fields)) {
+							body.person.custom_fields = custom_fields;
+						}
 					}
 
 				}
