@@ -27,6 +27,13 @@
   <label>Phone Number:</label>
   <input type="text" name="phone_number"  />
 
+  <label>Member Number:</label>
+  <input type="text" name="custom[member_number]">
+
+  <label>Is Member</label>
+  <label><input type="radio" name="custom[is_member]" value="1"> Yes</label>
+  <label><input type="radio" name="custom[is_member]" value="0"> No</label>
+
   <button type="submit" id="simple_submit" value="Submit" class="btn-primary btn">Submit</button>
 </form>
 
