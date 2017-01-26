@@ -4,8 +4,8 @@
 	
 	Submit forms to OSDI-compatible systems using OSDI's non-authenticated POST functions and triggers. Requires jQuery 1.8 or above. More info on OSDI at http://opensupporter.org/
 	
-	Version: 1.1.0
-	Last Updated: January 11, 2017
+	Version: 1.2.0
+	Last Updated: January 25, 2017
 	Authors: Jason Rosenbaum
 	Repository: https://github.com/opensupporter/jquery-osdi
 	License: MIT open source, https://github.com/opensupporter/jquery-osdi/blob/master/LICENSE.md
@@ -242,19 +242,21 @@
 						$.extend( body, add_tags );
 					}
 					
-					if ($element.find('input[name="family_name"]').length && $element.find('input[name="family_name"]').val() != '') {
-						body.person.family_name = $element.find('input[name="family_name"]').val();
+					if ($element.find(':input[name="family_name"]').length && $element.find(':input[name="family_name"]').val()) {
+						body.person.family_name = $.isArray($element.find(':input[name="family_name"]').val()) ? $element.find(':input[name="family_name"]').val().pop() : $element.find(':input[name="family_name"]').val();
 					}
 					
-					if ($element.find('input[name="given_name"]').length && $element.find('input[name="given_name"]').val() != '') {
-						body.person.given_name = $element.find('input[name="given_name"]').val();
+					if ($element.find(':input[name="given_name"]').length && $element.find(':input[name="given_name"]').val()) {
+						body.person.given_name = $.isArray($element.find(':input[name="given_name"]').val()) ? $element.find(':input[name="given_name"]').val().pop() : $element.find(':input[name="given_name"]').val();
 					}
 					
-					if ($element.find('input[name="email_address"]').length && $element.find('input[name="email_address"]').val() != '') {
+					if ($element.find(':input[name="email_address"]').length && $element.find(':input[name="email_address"]').val()) {
+						var email_address_string = $.isArray($element.find(':input[name="email_address"]').val()) ? $element.find(':input[name="email_address"]').val().pop() : $element.find(':input[name="email_address"]').val();
+						
 						email_address = {
 							"email_addresses" : [ 
 								{ 
-									"address" : $element.find('input[name="email_address"]').val() 	
+									"address" : email_address_string
 								}
 							]
 						};
@@ -274,34 +276,34 @@
 					}
 					
 					if (
-						   	($element.find('input[name="street"]').length && $element.find('input[name="street"]').val() != '') 
-						|| 	($element.find('input[name="locality"]').length && $element.find('input[name="locality"]').val() != '') 
-						||	($element.find('input[name="region"]').length && $element.find('input[name="region"]').val() != '') 
-						|| 	($element.find('input[name="postal_code"]').length && $element.find('input[name="postal_code"]').val() != '')
-						|| 	($element.find('input[name="country"]').length && $element.find('input[name="country"]').val() != '')
+						   	($element.find(':input[name="street"]').length && $element.find(':input[name="street"]').val()) 
+						|| 	($element.find(':input[name="locality"]').length && $element.find(':input[name="locality"]').val()) 
+						||	($element.find(':input[name="region"]').length && $element.find(':input[name="region"]').val()) 
+						|| 	($element.find(':input[name="postal_code"]').length && $element.find(':input[name="postal_code"]').val())
+						|| 	($element.find(':input[name="country"]').length && $element.find(':input[name="country"]').val())
 					) {
 						postal_address = {};
 						
-						if ($element.find('input[name="street"]').length && $element.find('input[name="street"]').val() != '') {
+						if ($element.find(':input[name="street"]').length && $element.find(':input[name="street"]').val()) {
 							postal_address.address_lines = [
-								$element.find('input[name="street"]').val()
+								$.isArray($element.find(':input[name="street"]').val()) ? $element.find(':input[name="street"]').val().pop() : $element.find(':input[name="street"]').val()
 							];
 						}
 						
-						if ($element.find('input[name="locality"]').length && $element.find('input[name="locality"]').val() != '') {
-							postal_address.locality = $element.find('input[name="locality"]').val();
+						if ($element.find(':input[name="locality"]').length && $element.find(':input[name="locality"]').val()) {
+							postal_address.locality = $.isArray($element.find(':input[name="locality"]').val()) ? $element.find(':input[name="locality"]').val().pop() : $element.find(':input[name="locality"]').val();
 						}
 						
-						if ($element.find('input[name="region"]').length && $element.find('input[name="region"]').val() != '') {
-							postal_address.region = $element.find('input[name="region"]').val();
+						if ($element.find(':input[name="region"]').length && $element.find(':input[name="region"]').val()) {
+							postal_address.region = $.isArray($element.find(':input[name="region"]').val()) ? $element.find(':input[name="region"]').val().pop() : $element.find(':input[name="region"]').val();
 						}
 						
-						if ($element.find('input[name="postal_code"]').length && $element.find('input[name="postal_code"]').val() != '') {
-							postal_address.postal_code = $element.find('input[name="postal_code"]').val();
+						if ($element.find(':input[name="postal_code"]').length && $element.find(':input[name="postal_code"]').val()) {
+							postal_address.postal_code = $.isArray($element.find(':input[name="postal_code"]').val()) ? $element.find(':input[name="postal_code"]').val().pop() : $element.find(':input[name="postal_code"]').val();
 						}
 						
-						if ($element.find('input[name="country"]').length && $element.find('input[name="country"]').val() != '') {
-							postal_address.country = $element.find('input[name="country"]').val();
+						if ($element.find(':input[name="country"]').length && $element.find(':input[name="country"]').val()) {
+							postal_address.country = $.isArray($element.find(':input[name="country"]').val()) ? $element.find(':input[name="country"]').val().pop() : $element.find(':input[name="country"]').val();
 						}
 						
 						postal_addresses = {
@@ -313,11 +315,13 @@
 						$.extend( body.person, postal_addresses );
 					}
 					
-					if ($element.find('input[name="phone_number"]').length && $element.find('input[name="phone_number"]').val() != '') {
+					if ($element.find(':input[name="phone_number"]').length && $element.find(':input[name="phone_number"]').val()) {
+						var phone_number_string = $.isArray($element.find(':input[name="phone_number"]').val()) ? $element.find(':input[name="phone_number"]').val().pop()	: $element.find(':input[name="phone_number"]').val();
+						
 						phone_number = {
 							"phone_numbers" : [ 
 								{ 
-									"number" : $element.find('input[name="phone_number"]').val() 	
+									"number" : phone_number_string
 								}
 							]
 						};
